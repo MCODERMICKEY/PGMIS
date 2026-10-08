@@ -1,0 +1,7 @@
+Save real school photos and videos into this folder
+(e.g. sports-day-2026.jpg, graduation-2026.mp4).
+
+Then list each one in js/gallery-data.js so it shows up on the
+Gallery page. Open gallery.html and see the "Add Photos & Videos"
+box near the top for the exact code format to copy — it covers
+photos, local video files, and embedded videos (e.g. YouTube).

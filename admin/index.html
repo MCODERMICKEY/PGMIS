@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="images/logo/Peculia vid logo 1.svg" type="image/svg+xml">
+<link rel="alternate icon" href="images/logo/Peculia Gift Montessori School.png">
+<link rel="apple-touch-icon" href="images/logo/Peculia Gift Montessori School.png">
+<title>Admin — Peculiar Gift Montessori School</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#cf3a3f;--blue:#1f4e8c;--navy:#0f2a4d;--bg:#f2f5fb;--mut:#6b7a90}
+*{box-sizing:border-box}body{margin:0;font:15px Inter,sans-serif;background:var(--bg);color:#1c2a3e}
+h1,h2,h3{font-family:Fredoka,sans-serif;margin:0}.hide{display:none!important}
+button{font:inherit;cursor:pointer}.btn{border:0;padding:10px 18px;border-radius:10px;font-weight:600;color:#fff;background:var(--blue);transition:.2s}.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn.red{background:var(--red)}.btn.ghost{background:#e8eef8;color:var(--blue)}.btn.sm{padding:6px 12px;font-size:13px}.btn:disabled{opacity:.6}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid #d6deec;border-radius:10px;font:inherit;background:#fff}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,78,140,.15)}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px;color:#44546b}
+/* login */
+#login{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 15% 20%,rgba(207,58,63,.35),transparent 40%),radial-gradient(circle at 85% 80%,rgba(80,140,230,.4),transparent 45%),var(--navy);position:relative;overflow:hidden}
+.rods{position:absolute;inset:auto 0 0 0;display:flex;gap:10px;justify-content:center;opacity:.15}.rods i{width:34px;border-radius:8px 8px 0 0;background:#fff;animation:rise 3s ease-in-out infinite alternate}
+@keyframes rise{from{transform:translateY(25px)}to{transform:translateY(0)}}
+.lbox{background:#fff;width:100%;max-width:410px;padding:34px 30px;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative;z-index:1}
+.lbox h1{color:var(--blue);font-size:1.7rem}.lbox p.s{color:var(--mut);margin:4px 0 8px}
+.pw{position:relative}.pw input{padding-right:46px}.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:0;border:0;padding:8px;color:var(--mut);display:grid}.eye:hover{color:var(--blue)}
+.err{color:var(--red);font-size:13.5px;min-height:20px;margin-top:10px}.lnk{background:0;border:0;color:var(--blue);font-weight:600;padding:0;margin-top:14px}
+/* app */
+#app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,var(--navy),#16396b);color:#fff;padding:22px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}
+aside h2{font-size:1.15rem;padding:0 10px 18px;display:flex;gap:10px;align-items:center}aside h2 b{display:flex;gap:3px}aside h2 b i{width:6px;height:22px;border-radius:2px;background:var(--red)}aside h2 b i:nth-child(even){background:#6fa5f0}
+aside a{display:flex;gap:11px;align-items:center;padding:12px 14px;border-radius:12px;color:#c8d6ee;text-decoration:none;margin-bottom:4px;cursor:pointer;transition:.2s}aside a:hover{background:rgba(255,255,255,.08)}aside a.on{background:var(--red);color:#fff;box-shadow:0 6px 16px rgba(207,58,63,.4)}
+aside .sp{flex:1}main{padding:28px 32px;max-width:1200px;width:100%}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:10px;flex-wrap:wrap}.top h1{font-size:1.7rem;color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.stat{background:#fff;border-radius:16px;padding:20px;box-shadow:0 4px 14px rgba(15,42,77,.07);border-left:6px solid var(--blue)}.stat:nth-child(2){border-color:var(--red)}.stat:nth-child(3){border-color:#2f9e6b}.stat:nth-child(4){border-color:#e0a21a}
+.stat b{font:600 2rem Fredoka;display:block}.stat span{color:var(--mut);font-size:13px}
+.panel{background:#fff;border-radius:16px;padding:20px;box-shadow:0 4px 14px rgba(15,42,77,.07);margin-bottom:20px}
+table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;text-transform:uppercase;color:var(--mut);padding:10px;border-bottom:2px solid #e8eef8}td{padding:12px 10px;border-bottom:1px solid #eef2f8}tr:hover td{background:#f7f9fd}
+.tw{overflow-x:auto}.badge{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;background:#e8eef8;color:var(--blue)}.badge.Accepted{background:#dff5ea;color:#1f7a50}.badge.Rejected{background:#fde4e5;color:var(--red)}.badge.Reviewed{background:#fff2d1;color:#9a6b00}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row input,.row select{width:auto;flex:1;min-width:160px}
+.ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}.ad{border-radius:14px;overflow:hidden;background:#f2f5fb;box-shadow:0 3px 10px rgba(0,0,0,.08)}.ad img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.ad div{padding:10px;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.drop{border:2.5px dashed #b9c7e0;border-radius:14px;padding:22px;text-align:center;color:var(--mut);cursor:pointer;margin-top:10px;transition:.2s}.drop:hover,.drop.on{border-color:var(--red);background:#fff5f5}.drop img{max-height:140px;border-radius:10px;margin-top:10px}
+.modal{position:fixed;inset:0;background:rgba(10,25,50,.6);display:grid;place-items:start center;overflow:auto;padding:30px 14px;z-index:20;backdrop-filter:blur(3px)}.mc{background:#fff;border-radius:18px;max-width:820px;width:100%;padding:26px}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:13px 20px;border-radius:12px;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:up .3s}.toast.bad{background:var(--red)}@keyframes up{from{transform:translateY(20px);opacity:0}}
+.warn{background:#fff6dd;border:1px solid #f0d585;border-radius:12px;padding:12px 16px;margin-bottom:18px}
+.sheet .sh{display:flex;gap:14px;align-items:center;border-bottom:4px solid #1b2a4a;padding-bottom:10px}.sheet .lg{width:64px;height:64px;object-fit:contain}.sheet .sh h2{text-align:left;font-size:1.1rem;color:#1b2a4a}.sheet .ad{font-size:12px;color:var(--mut)}.sheet .an{margin-left:auto;text-align:right;font-size:12px;color:var(--mut)}.sheet .ft{margin-top:14px;color:#1b2a4a}.sheet .ph{float:right;width:105px;height:125px;object-fit:cover;border:2px dashed #b9c7e0;border-radius:12px;margin:0 0 8px 14px}.sheet .np{display:grid;place-items:center;font-size:12px;color:var(--mut)}.sheet h2{text-align:center;color:var(--blue)}.sheet .sub{text-align:center;color:var(--mut);margin:2px 0 16px}.sheet h3{background:none;color:#1b2a4a;padding:4px 0;border-bottom:2px solid #ece9d8;border-radius:0;font-size:1rem;margin:16px 0 4px;clear:both}
+.sheet dl{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin:0}.sheet dl div{border-bottom:1px solid #dde4f0;padding:7px 0}.sheet dt{font-size:11px;text-transform:uppercase;color:var(--mut)}.sheet dd{margin:2px 0 0;font-weight:500;min-height:18px;white-space:pre-wrap}.sheet .full{grid-column:1/-1}
+#printArea{display:none}
+@media print{body>*:not(#printArea){display:none!important}#printArea{display:block!important;padding:10px}}
+@media(max-width:800px){#app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:10px}aside h2{width:100%;padding-bottom:6px}aside .sp{display:none}main{padding:18px 14px}.sheet dl{grid-template-columns:1fr}}
+</style></head><body>
+
+<div id="login"><div class="rods"></div>
+ <div class="lbox">
+  <div id="vLogin"><h1>Admin Login</h1><p class="s">Peculiar Gift Montessori School</p>
+   <label>Username</label><input id="lu" autocomplete="username">
+   <label>Password</label><div class="pw"><input id="lp" type="password" autocomplete="current-password"><button type="button" class="eye" aria-label="Show password"></button></div>
+   <div class="err" id="le"></div><button class="btn red" style="width:100%;margin-top:6px" id="lb">Sign In</button>
+   <button class="lnk" id="forgot">Forgot password?</button></div>
+  <div id="vRec" class="hide"><h1>Reset Password</h1><p class="s" id="rs">Enter your username to load your security questions.</p>
+   <label>Username</label><input id="ru"><div id="rq"></div>
+   <div class="err" id="re"></div><button class="btn" style="width:100%" id="rb">Continue</button><br><button class="lnk" id="back">← Back to sign in</button></div>
+ </div></div>
+
+<div id="app" class="hide">
+ <aside><h2><b><i></i><i></i><i></i></b>Peculiar Gift</h2>
+  <a data-v="dash" class="on">📊 Dashboard</a><a data-v="apps">📝 Applications</a><a data-v="ads">🖼️ Adverts</a><a data-v="set">⚙️ Settings</a>
+  <div class="sp"></div><a id="out">🚪 Log out</a></aside>
+ <main>
+  <section id="dash"></section><section id="apps" class="hide"></section><section id="ads" class="hide"></section><section id="set" class="hide"></section>
+ </main></div>
+<div id="printArea"></div>
+<script src="/js/admission-fields.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const EYE='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
+const EYEX='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 20C5 20 1 12 1 12a18 18 0 0 1 5.1-5.9M9.9 4.2A10 10 0 0 1 12 4c7 0 11 8 11 8a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg>';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function eyes(root=document){root.querySelectorAll('.eye').forEach(b=>{b.innerHTML=EYE;b.onclick=()=>{const i=b.previousElementSibling,s=i.type==='password';i.type=s?'text':'password';b.innerHTML=s?EYEX:EYE;b.setAttribute('aria-label',s?'Hide password':'Show password')}})}
+const pwField=(id,l,ac='new-password')=>`<label>${l}</label><div class="pw"><input id="${id}" type="password" autocomplete="${ac}"><button type="button" class="eye"></button></div>`;
+function toast(m,bad){const t=document.createElement('div');t.className='toast'+(bad?' bad':'');t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),3200)}
+async function api(a,body,method='POST'){const r=await fetch('/api/admin?action='+a,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.error||'Request failed'),{status:r.status});return j}
+document.querySelector('.rods').innerHTML=Array.from({length:22},(_,i)=>`<i style="height:${60+(i%10)*18}px;animation-delay:${i*.12}s"></i>`).join('');eyes();
+// ---- login / recovery
+const lg=async()=>{$('#le').textContent='';$('#lb').disabled=true;try{await api('login',{username:$('#lu').value,password:$('#lp').value});start()}catch(e){$('#le').textContent=e.message}$('#lb').disabled=false};
+$('#lb').onclick=lg;$('#lp').onkeydown=e=>e.key==='Enter'&&lg();
+$('#forgot').onclick=()=>{$('#vLogin').classList.add('hide');$('#vRec').classList.remove('hide')};$('#back').onclick=()=>{$('#vRec').classList.add('hide');$('#vLogin').classList.remove('hide')};
+let recStep=0;
+$('#rb').onclick=async()=>{$('#re').textContent='';try{
+ if(!recStep){const{questions}=await api('questions',{username:$('#ru').value});$('#rs').textContent='Answer your three security questions and choose a new password.';
+  $('#rq').innerHTML=questions.map((q,i)=>`<label>${esc(q)}</label><input class="ra" autocomplete="off">`).join('')+pwField('rn','New password (min 8 characters)');eyes($('#rq'));$('#rb').textContent='Reset Password';recStep=1}
+ else{await api('recover',{username:$('#ru').value,answers:$$('.ra').map(i=>i.value),next:$('#rn').value});toast('Password reset. Please sign in.');recStep=0;$('#rq').innerHTML='';$('#rb').textContent='Continue';$('#back').click()}
+}catch(e){$('#re').textContent=e.message}};
+// ---- app shell
+let me,apps=[],ads=[];
+async function start(){try{me=await api('me')}catch{return}$('#login').classList.add('hide');$('#app').classList.remove('hide');await load();show('dash')}
+async function load(){[apps,ads]=await Promise.all([api('apps'),fetch('/api/adverts').then(r=>r.json())]);render()}
+function show(v){$$('main section').forEach(s=>s.classList.toggle('hide',s.id!==v));$$('aside a[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===v))}
+$$('aside a[data-v]').forEach(a=>a.onclick=()=>show(a.dataset.v));$('#out').onclick=async()=>{await api('logout');location.reload()};
+function render(){dash();appsView();adsView();setView()}
+const warn=()=>me.hasQuestions?'':'<div class="warn">⚠️ You have not set your security questions yet. Go to <b>Settings</b> so you can recover your password if you forget it.</div>';
+function dash(){const c=s=>apps.filter(a=>a.status===s).length,m=apps.filter(a=>new Date(a.created).getMonth()===new Date().getMonth()).length;
+ $('#dash').innerHTML=`<div class="top"><h1>Welcome back, ${esc(me.username)} 👋</h1></div>${warn()}
+ <div class="cards"><div class="stat"><b>${apps.length}</b><span>Total applications</span></div><div class="stat"><b>${c('New')}</b><span>New / unread</span></div><div class="stat"><b>${c('Accepted')}</b><span>Accepted</span></div><div class="stat"><b>${ads.length}</b><span>Active adverts</span></div></div>
+ <div class="panel"><h3>Latest applications</h3><div class="tw"><table><tr><th>Ref</th><th>Child</th><th>Class</th><th>Date</th><th>Status</th></tr>${apps.slice(0,5).map(a=>`<tr><td>#${a.id}</td><td>${esc(a.data.full_name)}</td><td>${esc(a.data.preferred_class)}</td><td>${new Date(a.created).toLocaleDateString()}</td><td><span class="badge ${a.status}">${a.status}</span></td></tr>`).join('')||'<tr><td colspan=5>No applications yet.</td></tr>'}</table></div></div>`}
+function appsView(){$('#apps').innerHTML=`<div class="top"><h1>Applications</h1><input id="q" placeholder="Search name, phone…" style="max-width:260px"></div><div class="panel tw"><table><thead><tr><th>Ref</th><th>Child</th><th>Class</th><th>Parent phone</th><th>Date</th><th>Status</th><th></th></tr></thead><tbody id="ab"></tbody></table></div>`;
+ const draw=()=>{const q=$('#q').value.toLowerCase();$('#ab').innerHTML=apps.filter(a=>JSON.stringify(a.data).toLowerCase().includes(q)).map(a=>`<tr><td>#${a.id}</td><td><b>${esc(a.data.full_name)}</b></td><td>${esc(a.data.preferred_class)}</td><td>${esc(a.data.m_phone||a.data.f_phone||a.data.g_phone||a.data.e_phone)}</td><td>${new Date(a.created).toLocaleDateString()}</td><td><span class="badge ${a.status}">${a.status}</span></td><td><button class="btn sm" data-id="${a.id}">View</button></td></tr>`).join('')||'<tr><td colspan=7>No applications found.</td></tr>';$$('#ab button').forEach(b=>b.onclick=()=>open(+b.dataset.id))};$('#q').oninput=draw;draw()}
+const sheet=a=>`<div class="sheet"><div class="sh"><img class="lg" src="/images/logo/Peculia Gift Montessori School.png" onerror="this.remove()"><div><h2>PECULIAR GIFT MONTESSORI SCHOOL</h2><div class="ad">Housing Estate, Tarkwa Aboso, Western Region, Ghana · 054 279 6075 / 055 065 9438</div></div><div class="an">Admission No.<br><b>Ref #${a.id}</b></div></div><h2 class="ft">STUDENT APPLICATION / ADMISSION FORM</h2><div class="sub">Submitted ${new Date(a.created).toLocaleString()}</div>${a.data.photo?`<img class="ph" src="${esc(a.data.photo)}" alt="Passport photo">`:'<div class="ph np">No photo</div>'}${ADMISSION_SECTIONS.map(s=>`<h3>${s.title}</h3><dl>${s.fields.map(f=>`<div class="${f.full?'full':''}"><dt>${f.l}</dt><dd>${esc(a.data[f.k])}</dd></div>`).join('')}</dl>`).join('')}</div>`;
+function open(id){const a=apps.find(x=>x.id===id),m=document.createElement('div');m.className='modal';
+ m.innerHTML=`<div class="mc"><div class="row" style="justify-content:space-between;margin-bottom:14px"><select id="st" style="max-width:170px">${['New','Reviewed','Accepted','Rejected'].map(s=>`<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select><div class="row" style="flex:none"><button class="btn" id="pr">🖨️ Print</button><button class="btn ghost" id="dl">⬇️ Download</button><button class="btn red" id="rm">Delete</button><button class="btn ghost" id="cl">✕</button></div></div>${sheet(a)}</div>`;
+ document.body.append(m);const cl=()=>m.remove();$('#cl').onclick=cl;m.onclick=e=>e.target===m&&cl();
+ $('#st').onchange=async e=>{await api('status',{id,status:e.target.value});a.status=e.target.value;render();toast('Status updated')};
+ $('#pr').onclick=()=>{$('#printArea').innerHTML=sheet(a);window.print()};
+ $('#dl').onclick=()=>{const css=[...document.styleSheets[0].cssRules].map(r=>r.cssText).filter(t=>/sheet|:root|body|\*/.test(t)).join('\n');const h=`<!DOCTYPE html><meta charset="utf-8"><title>Application #${a.id}</title><style>${css}body{padding:30px;background:#fff}</style>${sheet(a)}`;const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([h.replaceAll('src="/','src="'+location.origin+'/')],{type:'text/html'}));l.download=`application-${a.id}-${(a.data.full_name||'').replace(/\W/g,'')}.html`;l.click()};
+ $('#rm').onclick=async()=>{if(!confirm('Delete this application permanently?'))return;await api('delete',{id});apps=apps.filter(x=>x.id!==id);cl();render();toast('Application deleted')}}
+function adsView(){$('#ads').innerHTML=`<div class="top"><h1>Advert Slideshow</h1></div><div class="panel"><h3>Add a new advert</h3><p style="color:var(--mut)">Shown in the slideshow on the home page. Wide pictures (16:7) look best.</p>
+ <input id="at" placeholder="Caption (optional)"><div class="drop" id="dz">📷 Click or drop an image here<input type="file" id="af" accept="image/*" class="hide"><div id="pv"></div></div><button class="btn red" id="ab2" style="margin-top:14px">Publish advert</button></div>
+ <div class="panel"><h3>Current adverts (${ads.length})</h3><div class="ads">${ads.map(a=>`<div class="ad"><img src="${a.image}" alt=""><div><span>${esc(a.title)||'<i>No caption</i>'}</span><button class="btn red sm" data-r="${a.id}">Remove</button></div></div>`).join('')||'<p>No adverts yet.</p>'}</div></div>`;
+ let img='';const f=$('#af'),dz=$('#dz');dz.onclick=e=>e.target!==f&&f.click();dz.ondragover=e=>{e.preventDefault();dz.classList.add('on')};dz.ondragleave=()=>dz.classList.remove('on');dz.ondrop=e=>{e.preventDefault();dz.classList.remove('on');f.files=e.dataTransfer.files;f.onchange()};
+ f.onchange=()=>{const file=f.files[0];if(!file)return;const im=new Image();im.onload=()=>{const s=Math.min(1,1400/im.width),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);img=c.toDataURL('image/jpeg',.8);$('#pv').innerHTML=`<img src="${img}">`};im.src=URL.createObjectURL(file)};
+ $('#ab2').onclick=async()=>{if(!img)return toast('Choose an image first',1);try{const r=await fetch('/api/adverts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:$('#at').value,image:img})});if(!r.ok)throw new Error((await r.json()).error);await load();toast('Advert published ✅')}catch(e){toast(e.message,1)}};
+ $$('[data-r]').forEach(b=>b.onclick=async()=>{if(!confirm('Remove this advert?'))return;await fetch('/api/adverts?id='+b.dataset.r,{method:'DELETE'});await load();toast('Advert removed')})}
+function setView(){$('#set').innerHTML=`<div class="top"><h1>Settings</h1></div>${warn()}
+ <div class="panel" style="max-width:520px"><h3>Change password</h3>${pwField('cp1','Current password','current-password')}${pwField('cp2','New password (min 8 characters)')}${pwField('cp3','Confirm new password')}<button class="btn" id="cpb" style="margin-top:16px">Update password</button></div>
+ <div class="panel" style="max-width:520px"><h3>Security questions</h3><p style="color:var(--mut)">Used to reset your password if you forget it. Write your own three questions; answers are not case-sensitive.</p>
+ ${[0,1,2].map(i=>`<label>Question ${i+1}</label><input class="sq" value="${esc(me.questions?.[i]||'')}" placeholder="e.g. What was the name of my first school?"><input class="sa" placeholder="Answer ${i+1}" style="margin-top:6px" autocomplete="off">`).join('')}${pwField('sqp','Current password (to confirm)','current-password')}<button class="btn red" id="sqb" style="margin-top:16px">Save security questions</button></div>`;eyes($('#set'));
+ $('#cpb').onclick=async()=>{if($('#cp2').value!==$('#cp3').value)return toast('New passwords do not match',1);try{await api('password',{current:$('#cp1').value,next:$('#cp2').value});['cp1','cp2','cp3'].forEach(i=>$('#'+i).value='');toast('Password updated ✅')}catch(e){toast(e.message,1)}};
+ $('#sqb').onclick=async()=>{try{await api('setquestions',{questions:$$('.sq').map(i=>i.value),answers:$$('.sa').map(i=>i.value),current:$('#sqp').value});me=await api('me');render();toast('Security questions saved ✅')}catch(e){toast(e.message,1)}}}
+start();
+</script></body></html>

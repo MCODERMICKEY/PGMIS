@@ -1,0 +1,11 @@
+Put the school's logo file in this folder and name it exactly:  logo.png
+
+Recommended: a square image (e.g. 512x512px), PNG with a transparent
+background if possible. As soon as a file named "logo.png" exists in
+this folder, it will automatically appear in the header and footer of
+every page — no code changes needed. Until then, a simple placeholder
+icon (in the school colors) is shown instead.
+
+You can also replace favicon.svg in this same folder with a proper
+favicon version of the logo — that's the small icon shown in the
+browser tab.
