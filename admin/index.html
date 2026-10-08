@@ -1,7 +1,4 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="images/logo/Peculia vid logo 1.svg" type="image/svg+xml">
-<link rel="alternate icon" href="images/logo/Peculia Gift Montessori School.png">
-<link rel="apple-touch-icon" href="images/logo/Peculia Gift Montessori School.png">
 <title>Admin — Peculiar Gift Montessori School</title><meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -79,7 +76,7 @@ async function api(a,body,method='POST'){const r=await fetch('/api/admin?action=
 document.querySelector('.rods').innerHTML=Array.from({length:22},(_,i)=>`<i style="height:${60+(i%10)*18}px;animation-delay:${i*.12}s"></i>`).join('');eyes();
 // ---- login / recovery
 const lg=async()=>{$('#le').textContent='';$('#lb').disabled=true;try{await api('login',{username:$('#lu').value,password:$('#lp').value});start()}catch(e){$('#le').textContent=e.message}$('#lb').disabled=false};
-$('#lb').onclick=lg;$('#lp').onkeydown=e=>e.key==='Enter'&&lg();
+$('#lb').onclick=lg;$('#lp').addEventListener('keydown',e=>{if(e.key==='Enter')lg()});$('#lu').addEventListener('keydown',e=>{if(e.key==='Enter')$('#lp').focus()});
 $('#forgot').onclick=()=>{$('#vLogin').classList.add('hide');$('#vRec').classList.remove('hide')};$('#back').onclick=()=>{$('#vRec').classList.add('hide');$('#vLogin').classList.remove('hide')};
 let recStep=0;
 $('#rb').onclick=async()=>{$('#re').textContent='';try{
@@ -104,7 +101,7 @@ function appsView(){$('#apps').innerHTML=`<div class="top"><h1>Applications</h1>
 const sheet=a=>`<div class="sheet"><div class="sh"><img class="lg" src="/images/logo/Peculia Gift Montessori School.png" onerror="this.remove()"><div><h2>PECULIAR GIFT MONTESSORI SCHOOL</h2><div class="ad">Housing Estate, Tarkwa Aboso, Western Region, Ghana · 054 279 6075 / 055 065 9438</div></div><div class="an">Admission No.<br><b>Ref #${a.id}</b></div></div><h2 class="ft">STUDENT APPLICATION / ADMISSION FORM</h2><div class="sub">Submitted ${new Date(a.created).toLocaleString()}</div>${a.data.photo?`<img class="ph" src="${esc(a.data.photo)}" alt="Passport photo">`:'<div class="ph np">No photo</div>'}${ADMISSION_SECTIONS.map(s=>`<h3>${s.title}</h3><dl>${s.fields.map(f=>`<div class="${f.full?'full':''}"><dt>${f.l}</dt><dd>${esc(a.data[f.k])}</dd></div>`).join('')}</dl>`).join('')}</div>`;
 function open(id){const a=apps.find(x=>x.id===id),m=document.createElement('div');m.className='modal';
  m.innerHTML=`<div class="mc"><div class="row" style="justify-content:space-between;margin-bottom:14px"><select id="st" style="max-width:170px">${['New','Reviewed','Accepted','Rejected'].map(s=>`<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select><div class="row" style="flex:none"><button class="btn" id="pr">🖨️ Print</button><button class="btn ghost" id="dl">⬇️ Download</button><button class="btn red" id="rm">Delete</button><button class="btn ghost" id="cl">✕</button></div></div>${sheet(a)}</div>`;
- document.body.append(m);const cl=()=>m.remove();$('#cl').onclick=cl;m.onclick=e=>e.target===m&&cl();
+ document.body.append(m);const cl=()=>m.remove();$('#cl').onclick=cl;m.addEventListener('click',e=>{if(e.target===m)cl()});
  $('#st').onchange=async e=>{await api('status',{id,status:e.target.value});a.status=e.target.value;render();toast('Status updated')};
  $('#pr').onclick=()=>{$('#printArea').innerHTML=sheet(a);window.print()};
  $('#dl').onclick=()=>{const css=[...document.styleSheets[0].cssRules].map(r=>r.cssText).filter(t=>/sheet|:root|body|\*/.test(t)).join('\n');const h=`<!DOCTYPE html><meta charset="utf-8"><title>Application #${a.id}</title><style>${css}body{padding:30px;background:#fff}</style>${sheet(a)}`;const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([h.replaceAll('src="/','src="'+location.origin+'/')],{type:'text/html'}));l.download=`application-${a.id}-${(a.data.full_name||'').replace(/\W/g,'')}.html`;l.click()};
