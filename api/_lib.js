@@ -15,6 +15,8 @@ export function isAdmin(req) {
 let ready;
 export const init = () => ready ||= (async () => {
   await sql`CREATE TABLE IF NOT EXISTS admin(id INT PRIMARY KEY, username TEXT, pass TEXT, questions JSONB, answers JSONB)`;
+  await sql`ALTER TABLE admin ADD COLUMN IF NOT EXISTS display_name TEXT`;
+  await sql`ALTER TABLE admin ADD COLUMN IF NOT EXISTS avatar TEXT`;
   await sql`CREATE TABLE IF NOT EXISTS applications(id SERIAL PRIMARY KEY, data JSONB, status TEXT DEFAULT 'New', created TIMESTAMPTZ DEFAULT now())`;
   await sql`CREATE TABLE IF NOT EXISTS adverts(id SERIAL PRIMARY KEY, title TEXT, image TEXT, created TIMESTAMPTZ DEFAULT now())`;
   if (!(await sql`SELECT 1 FROM admin WHERE id=1`).length)
