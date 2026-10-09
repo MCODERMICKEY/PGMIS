@@ -26,7 +26,13 @@ export default async function handler(req, res) {
       await sql`UPDATE admin SET pass=${hash(b.next)} WHERE id=1`; return res.json({ ok: true });
     }
     if (!isAdmin(req)) return res.status(401).json({ error: 'Not authorised' });
-    if (a === 'me') return res.json({ ok: true, username: adm.username, hasQuestions: !!adm.questions, questions: adm.questions });
+    if (a === 'me') return res.json({ ok: true, username: adm.username, hasQuestions: !!adm.questions, questions: adm.questions, display_name: adm.display_name, avatar: adm.avatar });
+    if (a === 'profile') {
+      const name = String(b.name || '').trim().slice(0, 60); let av = adm.avatar;
+      if (b.avatar === '') av = null;
+      else if (typeof b.avatar === 'string') { if (!/^data:image\/jpeg;base64,/.test(b.avatar) || b.avatar.length > 200000) return res.status(400).json({ error: 'Invalid or too large photo.' }); av = b.avatar; }
+      await sql`UPDATE admin SET display_name=${name || null}, avatar=${av} WHERE id=1`; return res.json({ ok: true });
+    }
     if (a === 'apps') return res.json(await sql`SELECT id,data,status,created FROM applications ORDER BY id DESC`);
     if (a === 'status') { await sql`UPDATE applications SET status=${String(b.status).slice(0, 20)} WHERE id=${+b.id}`; return res.json({ ok: true }); }
     if (a === 'delete') { await sql`DELETE FROM applications WHERE id=${+b.id}`; return res.json({ ok: true }); }
