@@ -31,16 +31,15 @@ aside .sp{flex:1}main{padding:28px 32px;max-width:1200px;width:100%}
 table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;text-transform:uppercase;color:var(--mut);padding:10px;border-bottom:2px solid #e8eef8}td{padding:12px 10px;border-bottom:1px solid #eef2f8}tr:hover td{background:#f7f9fd}
 .tw{overflow-x:auto}.badge{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;background:#e8eef8;color:var(--blue)}.badge.Accepted{background:#dff5ea;color:#1f7a50}.badge.Rejected{background:#fde4e5;color:var(--red)}.badge.Reviewed{background:#fff2d1;color:#9a6b00}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row input,.row select{width:auto;flex:1;min-width:160px}
-.ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}.ad{border-radius:14px;overflow:hidden;background:#f2f5fb;box-shadow:0 3px 10px rgba(0,0,0,.08)}.ad img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.ad div{padding:10px;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}.tile{border-radius:14px;overflow:hidden;background:#f2f5fb;box-shadow:0 3px 10px rgba(0,0,0,.08)}.tile img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.tile div{padding:10px;display:flex;justify-content:space-between;align-items:center;gap:6px}
 .drop{border:2.5px dashed #b9c7e0;border-radius:14px;padding:22px;text-align:center;color:var(--mut);cursor:pointer;margin-top:10px;transition:.2s}.drop:hover,.drop.on{border-color:var(--red);background:#fff5f5}.drop img{max-height:140px;border-radius:10px;margin-top:10px}
 .modal{position:fixed;inset:0;background:rgba(10,25,50,.6);display:grid;place-items:start center;overflow:auto;padding:30px 14px;z-index:20;backdrop-filter:blur(3px)}.mc{background:#fff;border-radius:18px;max-width:820px;width:100%;padding:26px}
 .toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:13px 20px;border-radius:12px;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:up .3s}.toast.bad{background:var(--red)}@keyframes up{from{transform:translateY(20px);opacity:0}}
 .warn{background:#fff6dd;border:1px solid #f0d585;border-radius:12px;padding:12px 16px;margin-bottom:18px}
-.sheet .sh{display:flex;gap:14px;align-items:center;border-bottom:4px solid #1b2a4a;padding-bottom:10px}.sheet .lg{width:64px;height:64px;object-fit:contain}.sheet .sh h2{text-align:left;font-size:1.1rem;color:#1b2a4a}.sheet .ad{font-size:12px;color:var(--mut)}.sheet .an{margin-left:auto;text-align:right;font-size:12px;color:var(--mut)}.sheet .ft{margin-top:14px;color:#1b2a4a}.sheet .ph{float:right;width:105px;height:125px;object-fit:cover;border:2px dashed #b9c7e0;border-radius:12px;margin:0 0 8px 14px}.sheet .np{display:grid;place-items:center;font-size:12px;color:var(--mut)}.sheet h2{text-align:center;color:var(--blue)}.sheet .sub{text-align:center;color:var(--mut);margin:2px 0 16px}.sheet h3{background:none;color:#1b2a4a;padding:4px 0;border-bottom:2px solid #ece9d8;border-radius:0;font-size:1rem;margin:16px 0 4px;clear:both}
-.sheet dl{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin:0}.sheet dl div{border-bottom:1px solid #dde4f0;padding:7px 0}.sheet dt{font-size:11px;text-transform:uppercase;color:var(--mut)}.sheet dd{margin:2px 0 0;font-weight:500;min-height:18px;white-space:pre-wrap}.sheet .full{grid-column:1/-1}
-#printArea{display:none}
-@media print{body>*:not(#printArea){display:none!important}#printArea{display:block!important;padding:10px}}
-@media(max-width:800px){#app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:10px}aside h2{width:100%;padding-bottom:6px}aside .sp{display:none}main{padding:18px 14px}.sheet dl{grid-template-columns:1fr}}
+
+
+
+@media(max-width:800px){#app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:10px}aside h2{width:100%;padding-bottom:6px}aside .sp{display:none}main{padding:18px 14px}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px}.toast{display:flex;gap:9px;align-items:center}
 .vh{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}.drop{display:block;position:relative}.drop svg{color:var(--red);margin-bottom:6px}
 .llogo{display:block;width:92px;height:92px;object-fit:contain;margin:0 auto 10px;border-radius:50%;background:#fff;box-shadow:0 6px 20px rgba(31,78,140,.25);padding:4px}.lbox{text-align:left}.lbox h1,.lbox p.s{text-align:center}
@@ -48,6 +47,27 @@ table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;text
 .stat{display:flex;gap:14px;align-items:center}.stat>div:last-child{min-width:0}.si{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--blue);flex:none}.stat:nth-child(2) .si{background:var(--red)}.stat:nth-child(3) .si{background:#2f9e6b}.stat:nth-child(4) .si{background:#e0a21a}
 .hi{display:flex;gap:9px;align-items:center;color:var(--navy)}.hi svg{color:var(--red)}.warn{display:flex;gap:10px;align-items:flex-start}.warn svg{color:#c98a00;margin-top:2px}
 aside a svg{opacity:.9}.mc .row .btn svg{margin:0}
+
+.mc{container-type:inline-size;overflow-x:auto}
+.sheet{background:#fff;color:#1b2a4a;font-family:Inter,Arial,sans-serif;padding:26px 30px;border:1px solid #dde4f0;border-radius:6px}
+.sheet .sh{display:flex;gap:14px;align-items:center;border-bottom:4px solid #1b2a4a;padding-bottom:12px}
+.sheet .lg{width:66px;height:66px;object-fit:contain;flex:none}
+.sheet .sh h2{margin:0;font:700 19px/1.2 Georgia,'Times New Roman',serif;text-align:left;letter-spacing:.3px;color:#1b2a4a}
+.sheet .addr{font-size:11px;color:#6b7a90;margin-top:3px}
+.sheet .an{margin-left:auto;text-align:right;font-size:11px;color:#8a96a8;flex:none}.sheet .an b{color:#1b2a4a;font-size:13px}
+.sheet .ft{text-align:center;font:700 20px Georgia,'Times New Roman',serif;margin:18px 0 2px;color:#1b2a4a}
+.sheet .sub{text-align:center;font-size:11px;color:#8a96a8;margin:0 0 16px}
+.sheet .sc{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
+.sheet .ph{width:118px;height:140px;border:2px dashed #c4cddd;border-radius:14px;object-fit:cover;display:grid;place-items:center;font-size:11px;color:#8a96a8;text-align:center;box-sizing:border-box}
+.sheet .sx{margin-bottom:16px;break-inside:avoid;page-break-inside:avoid}
+.sheet h3{font:700 15px Georgia,'Times New Roman',serif;margin:0 0 10px;padding-bottom:4px;border-bottom:2px solid #ece9d8;color:#1b2a4a;background:none}
+.sheet .g{display:grid;grid-template-columns:1fr 1fr;gap:12px 26px}.sheet .f.full{grid-column:1/-1}
+.sheet .f span{display:block;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:#7d889b}
+.sheet .f b{display:block;min-height:22px;border-bottom:1.5px solid #1b2a4a;padding:3px 0 2px;font-weight:500;font-size:13px;white-space:pre-wrap;word-break:break-word}
+@container (max-width:560px){.sheet .g,.sheet .sc{grid-template-columns:1fr}.sheet .sh{flex-wrap:wrap}.sheet .an{margin:0}}
+#printArea{display:none}
+@page{size:A4;margin:12mm}
+@media print{body{background:#fff}body>*:not(#printArea){display:none!important}#printArea{display:block!important}#printArea .sheet{border:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
 
 <div id="login"><div class="rods"></div>
@@ -64,10 +84,10 @@ aside a svg{opacity:.9}.mc .row .btn svg{margin:0}
 
 <div id="app" class="hide">
  <aside><div class="brandrow"><img src="/images/logo/Peculia%20Gift%20Montessori%20School.png" alt="" onerror="this.remove()"><div><b>Peculiar Gift</b><small>Admin Panel</small></div></div>
-  <a data-v="dash" class="on"><i data-i="dash"></i>Dashboard</a><a data-v="apps"><i data-i="apps"></i>Applications</a><a data-v="ads"><i data-i="ads"></i>Adverts</a><a data-v="set"><i data-i="set"></i>Settings</a>
+  <a data-v="dash" class="on"><i data-i="dash"></i>Dashboard</a><a data-v="apps"><i data-i="apps"></i>Applications</a><a data-v="slides"><i data-i="ads"></i>Adverts</a><a data-v="set"><i data-i="set"></i>Settings</a>
   <div class="sp"></div><a id="out"><i data-i="out"></i>Log out</a></aside>
  <main>
-  <section id="dash"></section><section id="apps" class="hide"></section><section id="ads" class="hide"></section><section id="set" class="hide"></section>
+  <section id="dash"></section><section id="apps" class="hide"></section><section id="slides" class="hide"></section><section id="set" class="hide"></section>
  </main></div>
 <div id="printArea"></div>
 <script src="/js/admission-fields.js"></script>
@@ -96,7 +116,7 @@ $('#rb').onclick=async()=>{$('#re').textContent='';try{
 // ---- app shell
 let me,apps=[],ads=[];
 async function start(){try{me=await api('me')}catch{return}$('#login').classList.add('hide');$('#app').classList.remove('hide');await load();show('dash')}
-async function load(){[apps,ads]=await Promise.all([api('apps'),fetch('/api/adverts').then(r=>r.json())]);render()}
+async function load(){[apps,ads]=await Promise.all([api('apps'),fetch('/api/showcase').then(r=>r.json())]);render()}
 function show(v){$$('main section').forEach(s=>s.classList.toggle('hide',s.id!==v));$$('aside a[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===v))}
 $$('aside a[data-v]').forEach(a=>a.onclick=()=>show(a.dataset.v));$('#out').onclick=async()=>{await api('logout');location.reload()};
 function render(){dash();appsView();adsView();setView()}
@@ -107,21 +127,25 @@ function dash(){const c=s=>apps.filter(a=>a.status===s).length,m=apps.filter(a=>
  <div class="panel"><h3>Latest applications</h3><div class="tw"><table><tr><th>Ref</th><th>Child</th><th>Class</th><th>Date</th><th>Status</th></tr>${apps.slice(0,5).map(a=>`<tr><td>#${a.id}</td><td>${esc(a.data.full_name)}</td><td>${esc(a.data.preferred_class)}</td><td>${new Date(a.created).toLocaleDateString()}</td><td><span class="badge ${a.status}">${a.status}</span></td></tr>`).join('')||'<tr><td colspan=5>No applications yet.</td></tr>'}</table></div></div>`}
 function appsView(){$('#apps').innerHTML=`<div class="top"><h1>Applications</h1><input id="q" placeholder="Search name, phone…" style="max-width:260px"></div><div class="panel tw"><table><thead><tr><th>Ref</th><th>Child</th><th>Class</th><th>Parent phone</th><th>Date</th><th>Status</th><th></th></tr></thead><tbody id="ab"></tbody></table></div>`;
  const draw=()=>{const q=$('#q').value.toLowerCase();$('#ab').innerHTML=apps.filter(a=>JSON.stringify(a.data).toLowerCase().includes(q)).map(a=>`<tr><td>#${a.id}</td><td><b>${esc(a.data.full_name)}</b></td><td>${esc(a.data.preferred_class)}</td><td>${esc(a.data.m_phone||a.data.f_phone||a.data.g_phone||a.data.e_phone)}</td><td>${new Date(a.created).toLocaleDateString()}</td><td><span class="badge ${a.status}">${a.status}</span></td><td><button class="btn sm" data-id="${a.id}">View</button></td></tr>`).join('')||'<tr><td colspan=7>No applications found.</td></tr>';$$('#ab button').forEach(b=>b.onclick=()=>open(+b.dataset.id))};$('#q').oninput=draw;draw()}
-const sheet=a=>`<div class="sheet"><div class="sh"><img class="lg" src="/images/logo/Peculia Gift Montessori School.png" onerror="this.remove()"><div><h2>PECULIAR GIFT MONTESSORI SCHOOL</h2><div class="ad">Housing Estate, Tarkwa Aboso, Western Region, Ghana · 054 279 6075 / 055 065 9438</div></div><div class="an">Admission No.<br><b>Ref #${a.id}</b></div></div><h2 class="ft">STUDENT APPLICATION / ADMISSION FORM</h2><div class="sub">Submitted ${new Date(a.created).toLocaleString()}</div>${a.data.photo?`<img class="ph" src="${esc(a.data.photo)}" alt="Passport photo">`:'<div class="ph np">No photo</div>'}${ADMISSION_SECTIONS.map(s=>`<h3>${s.title}</h3><dl>${s.fields.map(f=>`<div class="${f.full?'full':''}"><dt>${f.l}</dt><dd>${esc(a.data[f.k])}</dd></div>`).join('')}</dl>`).join('')}</div>`;
+const LOGO='/images/logo/Peculia%20Gift%20Montessori%20School.png';
+const sheet=a=>{const fld=f=>`<div class="f${f.full?' full':''}"><span>${f.l}</span><b>${esc(a.data[f.k])}</b></div>`;const sec=s=>`<div class="sx"><h3>${s.title}</h3><div class="g">${s.fields.map(fld).join('')}</div></div>`;const [c,...r]=ADMISSION_SECTIONS;
+return `<div class="sheet"><div class="sh"><img class="lg" src="${LOGO}" alt="" onerror="this.remove()"><div><h2>PECULIAR GIFT MONTESSORI SCHOOL</h2><div class="addr">Housing Estate, Tarkwa Aboso, Western Region, Ghana · 054 279 6075 / 055 065 9438</div></div><div class="an">Admission No.<br><b>Ref #${a.id}</b></div></div><h2 class="ft">STUDENT APPLICATION / ADMISSION FORM</h2><p class="sub">Submitted ${new Date(a.created).toLocaleString()}</p><div class="sc">${a.data.photo?`<img class="ph" src="${esc(a.data.photo)}" alt="Passport photo">`:'<div class="ph">No photo<br>attached</div>'}${sec(c)}</div>${r.map(sec).join('')}</div>`};
 function open(id){const a=apps.find(x=>x.id===id),m=document.createElement('div');m.className='modal';
- m.innerHTML=`<div class="mc"><div class="row" style="justify-content:space-between;margin-bottom:14px"><select id="st" style="max-width:170px">${['New','Reviewed','Accepted','Rejected'].map(s=>`<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select><div class="row" style="flex:none"><button class="btn" id="pr">${ic('print',17)} Print</button><button class="btn ghost" id="dl">${ic('dl',17)} Download</button><button class="btn red" id="rm">${ic('trash',17)} Delete</button><button class="btn ghost" id="cl" aria-label="Close">${ic('x',17)}</button></div></div>${sheet(a)}</div>`;
+ m.innerHTML=`<div class="mc"><div class="row" style="justify-content:space-between;margin-bottom:14px"><select id="st" style="max-width:170px">${['New','Reviewed','Accepted','Rejected'].map(s=>`<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select><div class="row" style="flex:none"><button class="btn" id="pr">${ic('print',17)} Print</button><button class="btn ghost" id="dl">${ic('dl',17)} Download PDF</button><button class="btn red" id="rm">${ic('trash',17)} Delete</button><button class="btn ghost" id="cl" aria-label="Close">${ic('x',17)}</button></div></div>${sheet(a)}</div>`;
  document.body.append(m);const cl=()=>m.remove();$('#cl').onclick=cl;m.addEventListener('click',e=>{if(e.target===m)cl()});
  $('#st').onchange=async e=>{await api('status',{id,status:e.target.value});a.status=e.target.value;render();toast('Status updated')};
- $('#pr').onclick=()=>{$('#printArea').innerHTML=sheet(a);window.print()};
- $('#dl').onclick=()=>{const css=[...document.styleSheets[0].cssRules].map(r=>r.cssText).filter(t=>/sheet|:root|body|\*/.test(t)).join('\n');const h=`<!DOCTYPE html><meta charset="utf-8"><title>Application #${a.id}</title><style>${css}body{padding:30px;background:#fff}</style>${sheet(a)}`;const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([h.replaceAll('src="/','src="'+location.origin+'/')],{type:'text/html'}));l.download=`application-${a.id}-${(a.data.full_name||'').replace(/\W/g,'')}.html`;l.click()};
+ $('#pr').onclick=async()=>{const pa=$('#printArea');pa.innerHTML=sheet(a);await Promise.all([...pa.querySelectorAll('img')].map(i=>i.decode?i.decode().catch(()=>{}):0));window.print()};
+ const loadPdf=()=>new Promise((ok,no)=>{if(window.html2pdf)return ok();const s=document.createElement('script');s.src='/js/html2pdf.bundle.min.js';s.onload=ok;s.onerror=no;document.head.append(s)});
+ $('#dl').onclick=async()=>{const b=$('#dl');b.disabled=true;try{await loadPdf();const h=document.createElement('div');h.innerHTML=sheet(a);const el=h.firstElementChild;el.style.cssText='width:718px;padding:0;border:0';
+ await html2pdf().set({margin:10,filename:`Application-${a.id}-${(a.data.full_name||'child').replace(/[^\w]+/g,'-')}.pdf`,image:{type:'jpeg',quality:.96},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.sx']}}).from(el).save();toast('PDF downloaded')}catch(e){console.error(e);toast('Could not create the PDF. Try Print instead.',1)}b.disabled=false};
  $('#rm').onclick=async()=>{if(!confirm('Delete this application permanently?'))return;await api('delete',{id});apps=apps.filter(x=>x.id!==id);cl();render();toast('Application deleted')}}
-function adsView(){$('#ads').innerHTML=`<div class="top"><h1>Advert Slideshow</h1></div><div class="panel"><h3>Add a new advert</h3><p style="color:var(--mut)">Shown in the slideshow on the home page. Wide pictures (16:7) look best.</p>
+function adsView(){$('#slides').innerHTML=`<div class="top"><h1>Advert Slideshow</h1></div><div class="panel"><h3>Add a new advert</h3><p style="color:var(--mut)">Shown in the slideshow on the home page. Wide pictures (16:7) look best.</p>
  <input id="at" placeholder="Caption (optional)"><label class="drop" id="dz" for="af">${ic('upload',34)}<div><b>Click here to choose a picture</b><br>or drag and drop it here</div><input type="file" id="af" accept="image/*" class="vh"><div id="pv"></div></label><button class="btn red" id="ab2" style="margin-top:14px">${ic('check',17)} Publish advert</button></div>
- <div class="panel"><h3>Current adverts (${ads.length})</h3><div class="ads">${ads.map(a=>`<div class="ad"><img src="${a.image}" alt=""><div><span>${esc(a.title)||'<i>No caption</i>'}</span><button class="btn red sm" data-r="${a.id}">${ic('trash',15)} Remove</button></div></div>`).join('')||'<p>No adverts yet.</p>'}</div></div>`;
+ <div class="panel"><h3>Current adverts (${ads.length})</h3><div class="tiles">${ads.map(a=>`<div class="tile"><img src="${a.image}" alt=""><div><span>${esc(a.title)||'<i>No caption</i>'}</span><button class="btn red sm" data-r="${a.id}">${ic('trash',15)} Remove</button></div></div>`).join('')||'<p>No adverts yet.</p>'}</div></div>`;
  let img='';const f=$('#af'),dz=$('#dz');dz.ondragover=e=>{e.preventDefault();dz.classList.add('on')};dz.ondragleave=()=>dz.classList.remove('on');dz.ondrop=e=>{e.preventDefault();dz.classList.remove('on');f.files=e.dataTransfer.files;f.onchange()};
  f.onchange=()=>{const file=f.files[0];if(!file)return;const im=new Image();im.onload=()=>{const s=Math.min(1,1400/im.width),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);img=c.toDataURL('image/jpeg',.8);$('#pv').innerHTML=`<img src="${img}">`};im.src=URL.createObjectURL(file)};
- $('#ab2').onclick=async()=>{if(!img)return toast('Choose an image first',1);try{const r=await fetch('/api/adverts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:$('#at').value,image:img})});if(!r.ok)throw new Error((await r.json()).error);await load();toast('Advert published')}catch(e){toast(e.message,1)}};
- $$('[data-r]').forEach(b=>b.onclick=async()=>{if(!confirm('Remove this advert?'))return;await fetch('/api/adverts?id='+b.dataset.r,{method:'DELETE'});await load();toast('Advert removed')})}
+ $('#ab2').onclick=async()=>{if(!img)return toast('Choose an image first',1);try{const r=await fetch('/api/showcase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:$('#at').value,image:img})});if(!r.ok)throw new Error((await r.json()).error);await load();toast('Advert published')}catch(e){toast(e.message,1)}};
+ $$('[data-r]').forEach(b=>b.onclick=async()=>{if(!confirm('Remove this advert?'))return;await fetch('/api/showcase?id='+b.dataset.r,{method:'DELETE'});await load();toast('Advert removed')})}
 function setView(){$('#set').innerHTML=`<div class="top"><h1>Settings</h1></div>${warn()}
  <div class="panel" style="max-width:520px"><h3 class="hi">${ic('key',22)} Change password</h3>${pwField('cp1','Current password','current-password')}${pwField('cp2','New password (min 8 characters)')}${pwField('cp3','Confirm new password')}<button class="btn" id="cpb" style="margin-top:16px">Update password</button></div>
  <div class="panel" style="max-width:520px"><h3 class="hi">${ic('shield',22)} Security questions</h3><p style="color:var(--mut)">Used to reset your password if you forget it. Write your own three questions; answers are not case-sensitive.</p>
