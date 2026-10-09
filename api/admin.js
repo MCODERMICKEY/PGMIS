@@ -31,7 +31,12 @@ export default async function handler(req, res) {
       const name = String(b.name || '').trim().slice(0, 60); let av = adm.avatar;
       if (b.avatar === '') av = null;
       else if (typeof b.avatar === 'string') { if (!/^data:image\/jpeg;base64,/.test(b.avatar) || b.avatar.length > 200000) return res.status(400).json({ error: 'Invalid or too large photo.' }); av = b.avatar; }
-      await sql`UPDATE admin SET display_name=${name || null}, avatar=${av} WHERE id=1`; return res.json({ ok: true });
+      const un = b.username === undefined ? adm.username : String(b.username).trim();
+      if (un !== adm.username) {
+        if (!/^[A-Za-z0-9._-]{3,30}$/.test(un)) return res.status(400).json({ error: 'Username must be 3-30 characters: letters, numbers, dot, dash or underscore.' });
+        if (!verify(b.current, adm.pass)) return res.status(400).json({ error: 'Enter your current password to change the username.' });
+      }
+      await sql`UPDATE admin SET display_name=${name || null}, avatar=${av}, username=${un} WHERE id=1`; return res.json({ ok: true });
     }
     if (a === 'apps') return res.json(await sql`SELECT id,data,status,created FROM applications ORDER BY id DESC`);
     if (a === 'status') { await sql`UPDATE applications SET status=${String(b.status).slice(0, 20)} WHERE id=${+b.id}`; return res.json({ ok: true }); }
