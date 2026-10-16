@@ -1,4 +1,4 @@
-import { sql, init, isAdmin, hash, verify, makeToken, norm } from './_lib.js';
+import { sql, init, isAdmin, hash, verify, makeToken, norm, admissionsOpen } from './_lib.js';
 const strong = p => typeof p === 'string' && p.length >= 8;
 export default async function handler(req, res) {
   try {
@@ -26,7 +26,8 @@ export default async function handler(req, res) {
       await sql`UPDATE admin SET pass=${hash(b.next)} WHERE id=1`; return res.json({ ok: true });
     }
     if (!isAdmin(req)) return res.status(401).json({ error: 'Not authorised' });
-    if (a === 'me') return res.json({ ok: true, username: adm.username, hasQuestions: !!adm.questions, questions: adm.questions, display_name: adm.display_name, avatar: adm.avatar });
+    if (a === 'me') return res.json({ ok: true, username: adm.username, hasQuestions: !!adm.questions, questions: adm.questions, display_name: adm.display_name, avatar: adm.avatar, admissions: await admissionsOpen() });
+    if (a === 'setadmissions') { await sql`INSERT INTO settings(k,v) VALUES('admissions',${b.open ? '1' : '0'}) ON CONFLICT (k) DO UPDATE SET v=EXCLUDED.v`; return res.json({ ok: true }); }
     if (a === 'profile') {
       const name = String(b.name || '').trim().slice(0, 60); let av = adm.avatar;
       if (b.avatar === '') av = null;
