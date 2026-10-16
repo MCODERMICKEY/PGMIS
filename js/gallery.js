@@ -128,21 +128,25 @@ function renderGallery(activeFilter = 'all') {
           <div class="tag">${label}</div>
         `;
       } else if (item.src) {
-        // Local video file — show a muted preview with a play badge
+        // Local video file — show a real frame from the video (not a blank tile) with a play badge
         fig.innerHTML = `
-          <video src="${item.src}" muted playsinline preload="metadata"
+          <video src="${item.src}#t=0.5" muted playsinline preload="metadata"
                  onerror="this.closest('.gallery-item').classList.add('img-missing'); this.style.display='none';"></video>
           <div class="play-badge">${playIcon}</div>
           <div class="tag">${label}</div>
         `;
+        const v = fig.querySelector('video');
+        v.addEventListener('loadedmetadata', () => { try { if (v.currentTime < 0.1) v.currentTime = Math.min(0.5, (v.duration || 1) / 2); } catch (e) {} });
       } else {
-        // Embedded video (e.g. YouTube) — no reliable local thumbnail, so
-        // show a simple placeholder tile with a play badge instead.
+        // Embedded video (YouTube) — show the video's own thumbnail picture
+        const yt = extractYouTubeId(item.embed);
         fig.innerHTML = `
-          <div class="video-fallback"></div>
+          ${yt ? `<img src="https://i.ytimg.com/vi/${yt}/mqdefault.jpg" alt="${caption}" loading="lazy">` : '<div class="video-fallback"></div>'}
           <div class="play-badge">${playIcon}</div>
           <div class="tag">${label}</div>
         `;
+        const im = fig.querySelector('img');
+        if (im) im.addEventListener('error', () => { const d = document.createElement('div'); d.className = 'video-fallback'; im.replaceWith(d); });
       }
 
       fig.addEventListener('click', () => openLightbox(item));
