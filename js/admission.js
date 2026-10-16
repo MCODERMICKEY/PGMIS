@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const st = await (window.siteStatus || Promise.resolve({ admissions: true }));
+  if (!st.admissions) {
+    document.querySelector('.form-card').innerHTML = `<div style="text-align:center;padding:30px 10px"><div style="width:70px;height:70px;border-radius:50%;background:#e8eef8;color:#1f4e8c;display:grid;place-items:center;margin:0 auto 16px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h2 style="margin:0 0 8px">Admissions are currently closed</h2><p style="color:#6b7a90;max-width:460px;margin:0 auto 22px">We are not accepting online applications at the moment. Please check back soon, or contact the school office and we will gladly help.</p><a href="contact.html" class="btn btn-red">Contact the School</a></div>`;
+    return;
+  }
   const form = document.getElementById('admForm'), msg = document.getElementById('formMsg'), btn = document.getElementById('submitBtn');
   const sec = s => `<fieldset class="adm-sec"><legend>${s.title}</legend><div class="adm-grid">${s.fields.map(admissionFieldHTML).join('')}</div></fieldset>`;
   const [child, ...rest] = ADMISSION_SECTIONS;
