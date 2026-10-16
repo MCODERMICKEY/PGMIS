@@ -1,8 +1,9 @@
-import { sql, init } from './_lib.js';
+import { sql, init, admissionsOpen } from './_lib.js';
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
   try {
     await init();
+    if (!(await admissionsOpen())) return res.status(403).json({ error: 'Admissions are currently closed.' });
     const d = req.body || {};
     if (d.website) return res.json({ ok: true });
     const clean = {};
