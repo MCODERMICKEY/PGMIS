@@ -50,3 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// ===================================================================
+// Admissions on/off — controlled from the admin dashboard.
+// When closed, every link to admission.html is hidden.
+// ===================================================================
+(function () {
+  const apply = open => document.querySelectorAll('a[href="admission.html"]').forEach(a => { (a.closest('li') || a).style.display = open ? '' : 'none'; });
+  let cached = '1'; try { cached = localStorage.getItem('adm_open') ?? '1'; } catch (e) {}
+  const run = open => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', () => apply(open)) : apply(open);
+  run(cached !== '0');
+  window.siteStatus = fetch('/api/site', { cache: 'no-store' }).then(r => r.json()).catch(() => ({ admissions: cached !== '0' }));
+  window.siteStatus.then(s => { try { localStorage.setItem('adm_open', s.admissions ? '1' : '0'); } catch (e) {} run(s.admissions); });
+})();
