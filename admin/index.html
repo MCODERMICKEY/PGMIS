@@ -1,5 +1,8 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin — Peculiar Gift Montessori School</title><meta name="robots" content="noindex">
+<link rel="icon" href="images/logo/Peculia vid logo 1.svg" type="image/svg+xml">
+<link rel="alternate icon" href="images/logo/Peculia Gift Montessori School.png">
+<link rel="apple-touch-icon" href="images/logo/Peculia Gift Montessori School.png">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--red:#cf3a3f;--blue:#1f4e8c;--navy:#0f2a4d;--bg:#f2f5fb;--mut:#6b7a90}
@@ -141,7 +144,7 @@ async function start(){try{me=await api('me')}catch{return}$('#login').classList
 async function load(){[apps,ads]=await Promise.all([api('apps'),fetch('/api/showcase').then(r=>r.json())]);render()}
 function show(v){$$('main section').forEach(s=>s.classList.toggle('hide',s.id!==v));$$('aside a[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===v))}
 $$('aside a[data-v]').forEach(a=>a.onclick=()=>show(a.dataset.v));$('#out').onclick=async()=>{await api('logout');location.reload()};
-const admPanel=()=>`<div class="panel admp ${me.admissions?'':'off'}"><div class="admi">${ic(me.admissions?'check':'lock',22)}</div><div class="admt"><h3>Admission form on website: ${me.admissions?'Open':'Closed'}</h3><p>${me.admissions?'Parents can see the Admission page and apply online.':'The Admission page and its menu links are hidden from visitors.'}</p></div><label class="sw" title="Turn admissions on or off"><input type="checkbox" class="admsw" ${me.admissions?'checked':''}><span></span></label></div>`;
+const admPanel=()=>`<div class="panel admp ${me.admissions?'':'off'}"><div class="admi">${ic(me.admissions?'check':'lock',22)}</div><div class="admt"><h3>Admission form on website: ${me.admissions?'Open':'Closed'}</h3><p>${me.admissions?'Parents can see the Admission page and apply online.':'The form is hidden from visitors. You can still view, print and manage every application already received.'}</p></div><label class="sw" title="Turn admissions on or off"><input type="checkbox" class="admsw" ${me.admissions?'checked':''}><span></span></label></div>`;
 function bindAdm(){$$('.admsw').forEach(c=>c.onchange=async()=>{c.disabled=true;try{await api('setadmissions',{open:c.checked});me.admissions=c.checked;render();toast(c.checked?'Admissions are now open on the website':'Admissions are now closed on the website')}catch(e){c.checked=!c.checked;toast(e.message,1)}c.disabled=false})}
 function render(){renderMe();dash();appsView();adsView();setView();bindAdm()}
 const warn=()=>me.hasQuestions?'':`<div class="warn">${ic('alert',20)}<span>You have not set your security questions yet. Go to <b>Settings</b> so you can recover your password if you forget it.</span></div>`;
