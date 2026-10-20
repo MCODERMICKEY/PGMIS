@@ -39,6 +39,9 @@ export default async function handler(req, res) {
       }
       await sql`UPDATE admin SET display_name=${name || null}, avatar=${av}, username=${un} WHERE id=1`; return res.json({ ok: true });
     }
+    if (a === 'enquiries') return res.json(await sql`SELECT id,data,status,created FROM enquiries ORDER BY id DESC`);
+    if (a === 'enqstatus') { await sql`UPDATE enquiries SET status=${String(b.status).slice(0, 20)} WHERE id=${+b.id}`; return res.json({ ok: true }); }
+    if (a === 'enqdelete') { await sql`DELETE FROM enquiries WHERE id=${+b.id}`; return res.json({ ok: true }); }
     if (a === 'apps') return res.json(await sql`SELECT id,data,status,created FROM applications ORDER BY id DESC`);
     if (a === 'status') { await sql`UPDATE applications SET status=${String(b.status).slice(0, 20)} WHERE id=${+b.id}`; return res.json({ ok: true }); }
     if (a === 'delete') { await sql`DELETE FROM applications WHERE id=${+b.id}`; return res.json({ ok: true }); }
