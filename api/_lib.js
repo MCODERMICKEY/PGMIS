@@ -18,6 +18,7 @@ export const init = () => ready ||= (async () => {
   await sql`ALTER TABLE admin ADD COLUMN IF NOT EXISTS display_name TEXT`;
   await sql`ALTER TABLE admin ADD COLUMN IF NOT EXISTS avatar TEXT`;
   await sql`CREATE TABLE IF NOT EXISTS settings(k TEXT PRIMARY KEY, v TEXT)`;
+  await sql`CREATE TABLE IF NOT EXISTS enquiries(id SERIAL PRIMARY KEY, data JSONB, status TEXT DEFAULT 'New', created TIMESTAMPTZ DEFAULT now())`;
   await sql`CREATE TABLE IF NOT EXISTS applications(id SERIAL PRIMARY KEY, data JSONB, status TEXT DEFAULT 'New', created TIMESTAMPTZ DEFAULT now())`;
   await sql`CREATE TABLE IF NOT EXISTS adverts(id SERIAL PRIMARY KEY, title TEXT, image TEXT, created TIMESTAMPTZ DEFAULT now())`;
   if (!(await sql`SELECT 1 FROM admin WHERE id=1`).length)
